@@ -13,22 +13,15 @@ export const modelRepository = {
   },
   createModel: async (model) => {
     const [rows] = await database.execute(
-      "INSERT INTO model (Name, Url,User, TrainData, Description) VALUES (?, ?, ?, ?, ?)",
-      [model.name, model.url, model.user, model.trainData, model.description]
+      "INSERT INTO model (Name, File,User,  Description) VALUES (?, ?, ?, ?)",
+      [model.name, model.file, model.user, model.description]
     );
     return rows.affectedRows > 0 ? true : false;
   },
   updateModel: async (id, model) => {
     const [rows] = await database.execute(
-      "UPDATE model SET Name = ?, Url = ?, User = ?, TrainData = ?, Description = ? WHERE ID = ?",
-      [
-        model.name,
-        model.url,
-        model.user,
-        model.trainData,
-        model.description,
-        id,
-      ]
+      "UPDATE model SET Name = ?, File = ?, User = ?, Description = ? WHERE ID = ?",
+      [model.name, model.file, model.user, model.description, id]
     );
     return rows.affectedRows > 0 ? true : false;
   },

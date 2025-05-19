@@ -10,19 +10,6 @@ export const modelController = {
       res.status(500).json({ message: "Internal Server Error" });
     }
   },
-  getById: async (req, res) => {
-    try {
-      const model = await modelService.getModelById(req.params.id);
-      if (model) {
-        res.status(200).json(model);
-      } else {
-        res.status(404).json({ message: "Model not found" });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: "Internal Server Error" });
-    }
-  },
   create: async (req, res) => {
     try {
       const model = req.body;
