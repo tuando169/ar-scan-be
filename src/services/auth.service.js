@@ -1,5 +1,5 @@
 import { ErrorConstants } from "../constants/error.constant.js";
-import { authRepository } from "../repositories/auth.repository.js";
+import { authRepository } from "../repositories/user.repository.js";
 
 export const authService = {
   logIn: async (username, password) => {
