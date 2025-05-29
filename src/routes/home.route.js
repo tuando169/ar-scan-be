@@ -1,14 +1,15 @@
-import express from "express";
+import express from 'express';
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    res.send("OK");
+    res.send('OK');
     res.sendStatus(200);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+router.use('/uploads', express.static('uploads'));
 
 export default router;
