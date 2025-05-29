@@ -1,5 +1,5 @@
 {
-  "name": "ar-be",
+  "name": "ar-scan-be",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "^4.21.2",
     "mqtt": "^5.10.4",
+    "multer": "^2.0.0",
     "mysql2": "^3.13.0",
     "nodemon": "^3.1.9"
   }

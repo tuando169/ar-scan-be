@@ -12,7 +12,11 @@ export const modelController = {
   },
   create: async (req, res) => {
     try {
+      console.log(req);
+
       const model = req.body;
+      console.log("Creating model:", model);
+
       const result = await modelService.createModel(model);
       if (result) {
         res.status(201).json({ message: "Model created successfully" });
