@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/', modelController.getListByUser);
 router.get('/:id', modelController.getOne);
 router.post('/', upload.single('file'), modelController.create);
-router.patch('/:id', modelController.update);
+router.patch('/:id', upload.single('file'), modelController.update);
 router.delete('/:id', modelController.delete);
 export default router;

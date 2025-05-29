@@ -60,11 +60,24 @@ export const modelController = {
   },
   update: async (req, res) => {
     try {
-      const model = req.body;
-      const [rows] = await database.execute(
-        'UPDATE model SET name = ?, file = ?, user = ?, description = ? WHERE id = ?',
-        [model.name, model.file, model.user, model.description, id]
-      );
+      const id = req.params.id;
+      const { name, description } = req.body;
+      let query = 'UPDATE model SET name = ? , description = ?';
+      const params = [name, description];
+      if (req.file) {
+        query += ', file = ?';
+        params.push(req.file.path);
+      }
+      if (req.body.user) {
+        query += ', user = ?';
+        params.push(req.body.user);
+      }
+      query += ' WHERE id = ?';
+      params.push(id);
+
+      console.log(query, params);
+
+      const rows = await database.execute(query, params);
       if (rows.affectedRows > 0) {
         res.status(200).json({ message: 'Model updated successfully' });
       } else {
@@ -76,8 +89,9 @@ export const modelController = {
     }
   },
   delete: async (req, res) => {
+    const id = req.params.id;
     try {
-      const [rows] = await database.execute('DELETE FROM model WHERE id = ?', [
+      const rows = await database.execute('DELETE FROM model WHERE id = ?', [
         id,
       ]);
       if (rows.affectedRows) {
