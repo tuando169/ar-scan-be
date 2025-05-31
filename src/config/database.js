@@ -4,11 +4,12 @@ let connection;
 export const database = {
   connect: () => {
     connection = mysql.createPool({
-      host: "sql12.freesqldatabase.com	",
+      host: "sql12.freesqldatabase.com",
       user: "sql12782293",
       password: "p5JBVTLvMq",
-      database: "ar",
+      database: "sql12782293",
       port: 3306,
+      waitForConnections: true,
     });
   },
   execute: async (sql, params = []) => {
