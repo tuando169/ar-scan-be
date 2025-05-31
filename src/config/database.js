@@ -4,9 +4,9 @@ let connection;
 export const database = {
   connect: () => {
     connection = mysql.createPool({
-      host: "localhost",
-      user: "root",
-      password: "123456",
+      host: "sql12.freesqldatabase.com	",
+      user: "sql12782293",
+      password: "p5JBVTLvMq",
       database: "ar",
       port: 3306,
     });
