@@ -16,6 +16,6 @@ export const cloudHandler = {
         .end(buffer);
     });
 
-    return uploadResult.url;
+    return uploadResult.secure_url;
   },
 };
