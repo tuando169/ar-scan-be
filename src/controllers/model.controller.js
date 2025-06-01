@@ -1,3 +1,4 @@
+import { cloudHandler } from '../config/cloud.js';
 import { database } from '../config/database.js';
 
 export const modelController = {
@@ -33,16 +34,16 @@ export const modelController = {
   },
   create: async (req, res) => {
     try {
-      const filePath = req.file.path;
+      const buffer = req.file.buffer;
       const { name, user, description } = req.body;
 
+      const url = await cloudHandler.uploadFile(buffer);
       const model = {
         name,
-        file: filePath,
+        file: url,
         user,
         description,
       };
-      console.log(model);
 
       const result = await database.execute(
         'INSERT INTO model (name, file, user, description) VALUES (?, ?, ?, ?)',
@@ -74,8 +75,6 @@ export const modelController = {
       }
       query += ' WHERE id = ?';
       params.push(id);
-
-      console.log(query, params);
 
       const rows = await database.execute(query, params);
       if (rows.affectedRows > 0) {
