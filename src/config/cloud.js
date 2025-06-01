@@ -10,9 +10,12 @@ export const cloudHandler = {
   uploadFile: async (buffer) => {
     const uploadResult = await new Promise((resolve) => {
       cloudinary.uploader
-        .upload_stream({ resource_type: 'auto' }, (error, uploadResult) => {
-          return resolve(uploadResult);
-        })
+        .upload_stream(
+          { resource_type: 'auto', folder: 'ar' },
+          (error, uploadResult) => {
+            return resolve(uploadResult);
+          }
+        )
         .end(buffer);
     });
 
