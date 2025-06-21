@@ -1,19 +1,19 @@
-import mysql from 'mysql2/promise.js';
+import mysql from "mysql2/promise.js";
 
 const options =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === "production"
     ? {
-        host: 'sql12.freesqldatabase.com',
-        user: 'sql12782293',
-        password: 'p5JBVTLvMq',
-        database: 'sql12782293',
+        host: "sql12.freesqldatabase.com",
+        user: "sql12786007",
+        password: "eB8jMGzEMt",
+        database: "sql12786007",
         port: 3306,
       }
     : {
-        host: 'localhost',
-        user: 'root',
-        password: '123456',
-        database: 'ar',
+        host: "localhost",
+        user: "root",
+        password: "123456",
+        database: "ar",
         port: 3306,
       };
 
