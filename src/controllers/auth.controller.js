@@ -9,11 +9,9 @@ export const authController = {
         'SELECT * FROM user WHERE username = ? AND password = ?',
         [username, password]
       );
-      alert(result);
 
       if (result) {
         res.status(200).json({ id: result.id });
-        alert('id: ' + result.id);
       } else {
         res
           .status(ErrorConstants.NOT_FOUND.statusCode)
