@@ -11,7 +11,7 @@ export const authController = {
       );
 
       if (result) {
-        res.status(200).json({ id: result.id });
+        res.status(200).json({ id: result.id, result: result });
       } else {
         res
           .status(ErrorConstants.NOT_FOUND.statusCode)
